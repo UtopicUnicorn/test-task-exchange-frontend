@@ -1,0 +1,70 @@
+.ticker_container{
+}
+
+.instrument_select_block{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.instrument_select_block select{
+   height: 40px;
+   width: 250px;
+   text-align: center;
+}
+
+.amount_input_block{
+    position: relative;
+    text-align: center;
+}
+
+.amount_input_block label{
+    position: absolute;
+    top:-10px;
+    background: #fff;
+    margin: 0 5px;
+}
+
+.amount_input_block input{
+    box-sizing: border-box;
+    width: 250px;
+    height: 40px;
+    text-align: center;
+}
+
+.side_select_block{
+    margin-top: 50px;
+    display: flex ;
+    justify-content: space-around;
+}
+
+.side_block{
+    flex-direction: column;
+    text-align: center;
+}
+
+.side_block input{
+    background: none;
+    font-size: 19px;
+    border: none;
+    height: 60px;
+    width: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.side_block button{
+    text-align: center;
+    height: 40px;
+    width: 100px;
+}
+
+.ticker_buy_button{
+    background-color: rgba(0, 255, 0, 0.52);
+}
+
+.ticker_sell_button{
+    background-color: rgba(255, 0, 0, 0.52);
+
+
+}
