@@ -1,0 +1,73 @@
+.exchange_container{
+    text-align: center;
+}
+
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,75%);
+    position:fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    justify-content: center;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.modal.active{
+    opacity: 1;
+    transform: scale(1);
+    overflow: auto;
+}
+
+.modal__content {
+    padding: 20px;
+    position: center;
+    border-radius: 12px;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    transform: scale(0.5);
+    transition: 0.4s all;
+}
+.modal__content.active {
+    transform: scale(1);
+}
+.buttons_block{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content_block{
+    margin-top: 10px;
+    height: 400px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table_block{
+    margin-top: 15px;
+}
+
+.work_buttons{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    position: static;
+}
+
+.work_buttons button{
+    height: 40px;
+    width: 100px;
+}
+
+.cell_sell{
+    color: red;
+}
+.cell_buy{
+    color: green;
+}
