@@ -1,42 +1,44 @@
+export const date = new Date();
+
 export const transactions = [
   {
     id: 1,
-    createTime: new Date(),
-    changeTime: new Date(),
+    createTime: String(date),
+    changeTime: String(date),
     status: 'active',
     side: 'buy',
     price: 7.99,
     amount: 500,
-    instrument: 'chn/rub'
+    instrument: '0'
   },
   {
     id: 2,
-    createTime: new Date(),
-    changeTime: new Date(),
+    createTime: String(date),
+    changeTime: String(date),
     status: 'closed',
     side: 'sell',
     price: 7.99,
     amount: 500,
-    instrument: 'chn/rub'
+    instrument: '0'
   },
   {
     id: 3,
-    createTime: new Date(),
-    changeTime: new Date(),
-    status: 'rejected',
+    createTime: String(date),
+    changeTime: String(date),
+    status: 'active',
     side: 'sell',
     price: 7.99,
     amount: 500,
-    instrument: 'chn/rub'
+    instrument: '0'
   },
   {
     id: 4,
-    createTime: new Date(),
-    changeTime: new Date(),
+    createTime: String(date),
+    changeTime: String(date),
     status: 'cancelled',
     side: 'buy',
     price: 7.99,
     amount: 500,
-    instrument: 'chn/rub'
+    instrument: '0'
   }
 ];

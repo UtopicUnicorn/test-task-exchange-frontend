@@ -1,1 +1,1 @@
-export const instruments = ['CHN/RUB', 'RUB/CHN', 'RUB/TYR', 'TYR/RUB'];
+export const instruments = ['0', '1', '2', '3'];

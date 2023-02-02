@@ -1,7 +1,7 @@
 export interface TransactionInterface {
   id?: number;
-  createTime?: Date; //date will mount on server
-  changeTime?: Date; //date will mount on server
+  createTime?: string; //date will mount on server
+  changeTime?: string; //date will mount on server
   status?: string; //status will mount on server
   instrument: string;
   side: string;
