@@ -6,5 +6,6 @@ export const transactionsTableHeaders = [
   'Side',
   'Price',
   'Amount',
-  'Instrument'
+  'Instrument',
+  'Action'
 ];
