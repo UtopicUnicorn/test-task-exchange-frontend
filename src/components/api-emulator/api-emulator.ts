@@ -3,7 +3,7 @@ import { prices } from '../../mock-data/prices';
 import { transactions } from '../../mock-data/transactions';
 import { MessageInterface } from '../../interfaces/message.interface';
 import { TransactionInterface } from '../../pages/exchange-page/interfaces/transaction.interface';
-import { statusEnum } from '../../shared/text.enum';
+import { statusEnum } from '../../shared/enums/text.enum';
 
 export const ApiEmulator = (message: MessageInterface): MessageInterface => {
   switch (message.messageType) {
