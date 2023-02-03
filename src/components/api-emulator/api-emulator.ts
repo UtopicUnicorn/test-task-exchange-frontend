@@ -1,8 +1,9 @@
-import { messageType } from '../../pages/exchange-page/enums/exchange.enums';
+import { messageType } from '../../shared/enums/exchange.enums';
 import { prices } from '../../mock-data/prices';
 import { transactions } from '../../mock-data/transactions';
 import { MessageInterface } from '../../interfaces/message.interface';
 import { TransactionInterface } from '../../pages/exchange-page/interfaces/transaction.interface';
+import { statusEnum } from '../../shared/text.enum';
 
 export const ApiEmulator = (message: MessageInterface): MessageInterface => {
   switch (message.messageType) {
@@ -25,7 +26,7 @@ export const ApiEmulator = (message: MessageInterface): MessageInterface => {
   }
 };
 
-function sendPrices(message: any) {
+function sendPrices(message: TransactionInterface) {
   return prices.find((item) => item.instrument === message.instrument);
 }
 
@@ -38,20 +39,22 @@ function postTransaction(message: TransactionInterface) {
     id: transactions.length + 1,
     createTime: String(new Date()),
     changeTime: String(new Date()),
-    status: 'active',
+    status: statusEnum.active,
     amount: message.amount,
     price: message.price,
     side: message.side,
     instrument: message.instrument
   };
-  return transactions.push(obj);
+  transactions.push(obj);
+  return obj;
 }
 
-function updateTransaction(message: any) {
-  return transactions.find((item) => {
+function updateTransaction(message: TransactionInterface) {
+  transactions.find((item) => {
     if (item.id === message.id) {
-      item.status = 'canceled';
+      item.status = statusEnum.cancelled;
       item.changeTime = String(new Date());
     }
   });
+  return transactions.find((item) => message.id === item.id);
 }
