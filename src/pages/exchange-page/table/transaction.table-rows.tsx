@@ -3,8 +3,14 @@ import { TransactionInterface } from '../interfaces/transaction.interface';
 import { upperFirstLetter } from '../../../components/parsers/upper-first-letter';
 import { TransactionsService } from '../services/transactions.service';
 import { instrumentsNames } from '../../../shared/shared-objects';
+import { statusEnum } from '../../../shared/enums/text.enum';
 
-export function TransactionTableRows(transactions: TransactionInterface[]) {
+export function TransactionTableRows(transactions: TransactionInterface[], { updateData }: any) {
+  const cancelTransaction = (id: number | undefined) => {
+    const res = TransactionsService.cancelTransaction(id).message;
+    updateData(res);
+  };
+
   return transactions.map((transaction: TransactionInterface) => {
     return (
       <tr data-id={transaction.id} key={transaction.id}>
@@ -28,14 +34,12 @@ export function TransactionTableRows(transactions: TransactionInterface[]) {
           {/*search for name of the instrument in string format for display*/}
           {instrumentsNames.find((item) => item.id === transaction.instrument)?.value.toUpperCase()}
         </td>
-        {transaction.status === 'active' ? (
+        {transaction.status === statusEnum.active ? (
           <td>
-            <button onClick={() => TransactionsService.cancelTransaction(transaction.id)}>
-              Cancel
-            </button>
+            <button onClick={() => cancelTransaction(transaction.id)}>Cancel</button>
           </td>
         ) : (
-          <td></td>
+          <td />
         )}
       </tr>
     );

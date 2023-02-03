@@ -12,8 +12,23 @@ export default function ExchangePage() {
   const [modal, setModal] = useState(false);
   const [data, setData] = useState<TransactionInterface[]>([]);
 
-  //update data on start and on modal change in the future change on backend message
-  useEffect(() => setData(TransactionsService.getTransactions()), [modal]);
+  const [update, setUpdate] = useState({});
+
+  //update data on start and on update in the future should change on pushing new transaction to data without new get request
+  useEffect(() => getData(), [update]);
+
+  const getData = () => {
+    const data = TransactionsService.getTransactions();
+    setData(data);
+  };
+
+  //connection parent component to receive changes from child components
+  const updateData = (value: TransactionInterface) => {
+    const newValue = {
+      ...value
+    };
+    setUpdate(newValue);
+  };
 
   return (
     <div className="exchange_container">
@@ -26,11 +41,14 @@ export default function ExchangePage() {
         </div>
 
         <div className={'table_block'}>
-          <CustomTable header={transactionsTableHeaders} template={TransactionTableRows(data)} />
+          <CustomTable
+            header={transactionsTableHeaders}
+            template={TransactionTableRows(data, { updateData })}
+          />
         </div>
       </div>
       <ModalWindow active={modal} setActive={setModal}>
-        <Ticker />
+        <Ticker updateData={updateData} />
       </ModalWindow>
     </div>
   );

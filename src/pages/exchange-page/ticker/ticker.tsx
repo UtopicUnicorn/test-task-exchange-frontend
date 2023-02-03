@@ -6,26 +6,27 @@ import { instruments } from './selector/selector.constants';
 import { TickerService } from '../services/ticker.service';
 import { instrumentsNames } from '../../../shared/shared-objects';
 import { tickerInitialState } from '../reducers/ticker.reducer';
+import { TransactionInterface } from '../interfaces/transaction.interface';
+import { priceInitialState } from '../reducers/price.reducer';
 
-export default function Ticker() {
+export default function Ticker({ updateData }: any) {
   const dispatch = useDispatch();
+  const [form, setForm] = useState(tickerInitialState);
 
-  //tmp initial state for prices
-  const pricesInitialState = {
-    sell: 80,
-    buy: 69
-  };
-  const [prices, setPrices] = useState(pricesInitialState);
+  // initial state for prices
+  const [prices, setPrices] = useState(priceInitialState);
 
   useEffect(() => {
     const data = TickerService.getInstrument(form.instrument).price;
+
+    dispatch({ type: 'CHANGE_PRICE', payload: data });
     setPrices(data);
   }, []);
 
-  const [form, setForm] = useState(tickerInitialState);
-
-  const sendData = (obj: any) => {
-    TickerService.sendData(obj);
+  //send data to server
+  const sendData = (message: TransactionInterface) => {
+    const res = TickerService.sendData(message);
+    updateData(res.message);
   };
 
   //handle form input
@@ -44,18 +45,10 @@ export default function Ticker() {
       [ev.target.name]: ev.target.value
     });
     const data = TickerService.getInstrument(ev.target.value).price;
+
     dispatch({ type: 'NEW_TRANSACTION', payload: { [ev.target.name]: ev.target.value } });
     setPrices(data);
   };
-
-  //in future move to selector directory
-  const instrumentOptions = instruments.map((item: string, index) => {
-    return (
-      <option key={index} value={item}>
-        {instrumentsNames.find((name) => item === name.id)?.value.toUpperCase()}
-      </option>
-    );
-  });
 
   //handle submit and send message
   const handleSubmit = (side: string, price: number) => {
@@ -70,6 +63,14 @@ export default function Ticker() {
 
     dispatch({ type: 'NEW_TRANSACTION', payload: newTransaction });
   };
+
+  const instrumentOptions = instruments.map((item: string, index) => {
+    return (
+      <option key={index} value={item}>
+        {instrumentsNames.find((name) => item === name.id)?.value.toUpperCase()}
+      </option>
+    );
+  });
 
   return (
     <div>
