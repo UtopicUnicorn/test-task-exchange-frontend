@@ -1,19 +1,18 @@
 import { ApiEmulator } from '../../../components/api-emulator/api-emulator';
-import { messageType } from '../enums/exchange.enums';
+import { messageType } from '../../../shared/enums/exchange.enums';
 import { TransactionInterface } from '../interfaces/transaction.interface';
-import { transactions } from '../../../mock-data/transactions';
+import { InstrumentInterface } from '../interfaces/instrument.interface';
+import { MessageInterface } from '../../../interfaces/message.interface';
 
 export const TickerService = {
-  getInstrument: function (message: string) {
+  getInstrument: function (message: string): InstrumentInterface {
     const req = { messageType: messageType.Instrument, message: { instrument: message } };
     const data = ApiEmulator(req);
     return data?.message;
   },
 
-  sendData: function (message: TransactionInterface) {
+  sendData: function (message: TransactionInterface): MessageInterface {
     const req = { messageType: messageType.PostData, message: message };
-    const data = ApiEmulator(req);
-    console.log(transactions);
-    console.log(data);
+    return ApiEmulator(req);
   }
 };

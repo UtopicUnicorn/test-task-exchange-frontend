@@ -1,7 +1,7 @@
 import { ApiEmulator } from '../../../components/api-emulator/api-emulator';
 import { TransactionInterface } from '../interfaces/transaction.interface';
-import { transactions } from '../../../mock-data/transactions';
-import { messageType } from '../enums/exchange.enums';
+import { messageType } from '../../../shared/enums/exchange.enums';
+import { MessageInterface } from '../../../interfaces/message.interface';
 
 export const TransactionsService = {
   getTransactions: function (): TransactionInterface[] {
@@ -10,11 +10,11 @@ export const TransactionsService = {
     return data?.message;
   },
 
-  cancelTransaction: function (transactionId: number | undefined) {
+  cancelTransaction: function (transactionId: number | undefined): MessageInterface {
     if (typeof transactionId === 'undefined') {
       console.log('error');
     }
     const req = { messageType: messageType.UpdateData, message: { id: transactionId } };
-    ApiEmulator(req);
+    return ApiEmulator(req);
   }
 };
