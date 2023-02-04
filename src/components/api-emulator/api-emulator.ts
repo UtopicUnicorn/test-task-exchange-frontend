@@ -4,6 +4,8 @@ import { transactions } from '../../mock-data/transactions';
 import { MessageInterface } from '../../interfaces/message.interface';
 import { TransactionInterface } from '../../pages/exchange-page/interfaces/transaction.interface';
 import { statusEnum } from '../../shared/enums/text.enum';
+import { UserInterface } from '../../pages/auth/interfaces/user.interface';
+import { users } from '../../mock-data/users';
 
 export const ApiEmulator = (message: MessageInterface): MessageInterface => {
   switch (message.messageType) {
@@ -20,8 +22,12 @@ export const ApiEmulator = (message: MessageInterface): MessageInterface => {
       return { messageType: 3, message: updateTransaction(message.message) };
     }
 
+    case messageType.SignIn: {
+      return signIn(message.message);
+    }
+
     default: {
-      return { messageType: 10, message: 'error' };
+      return { messageType: messageType.Error, message: 'error' };
     }
   }
 };
@@ -57,4 +63,14 @@ function updateTransaction(message: TransactionInterface) {
     }
   });
   return transactions.find((item) => message.id === item.id);
+}
+
+function signIn(message: UserInterface) {
+  const user = users.find(
+    (user) => user.login === message.login && user.password === message.password
+  );
+  if (user != undefined) {
+    return { messageType: messageType.SignIn, message: user.id };
+  }
+  return { messageType: messageType.Error, message: 'No user found' };
 }
