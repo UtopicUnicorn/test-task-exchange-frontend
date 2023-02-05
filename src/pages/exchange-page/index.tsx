@@ -33,7 +33,7 @@ export default function ExchangePage() {
 
   return (
     <div className="exchange_container">
-      <div>
+      <div className="exchange_title">
         <h1>Welcome to our exchange portal</h1>
       </div>
       <div className="content_block">
