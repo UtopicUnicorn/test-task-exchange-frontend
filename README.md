@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Тестовое задание frontend - Биржа
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Инструкция по работе с проектом 
 
-## Available Scripts
+1. Скачать репозиторий
 
-In the project directory, you can run:
+```bash
+git clone git@github.com:UtopicUnicorn/test-task-exchange-frontend.git
+```
+2. Перейти в директорию с проектом и установить необходимые пакеты
 
-### `npm start`
+```bash
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. Запуск проекта
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+react-scripts start
+```
 
-### `npm test`
+4. Так как пользователя нельзя создать, для входа потребудется ввести логин и пароль: admin admin
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Реализованный основной функционал 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Возможность получать цены на покупку и продажу, в зависимости от инструмента;
+2. Возможность создавать транзакции на покупку/продажи валюты;
+3. Добавлена возможность смены статуса активной транзакции.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Реализованный дополнительный функционал
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Добавлена страница для аутентификации пользователя;
+2. Добавлены защищенные роуты до страниц со взаимодействиями с данными;
+3. Добавлена возможность экспорта данных в файл формата csv.
 
-### `npm run eject`
+## Необходимые доработки
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Добавить работу с полноценным api, для проверки корректности запросов добавить работу с json server в качестве заглушки
+2. Переработать функции отвечающие за будущие запросы на сервер под async/await; 
+3. Покрыть основной функционал тестами.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
