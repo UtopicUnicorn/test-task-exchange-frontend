@@ -43,8 +43,8 @@ function sendTransactions() {
 function postTransaction(message: TransactionInterface) {
   const obj = {
     id: transactions.length + 1,
-    createTime: String(new Date()),
-    changeTime: String(new Date()),
+    createTime: String(new Date().toISOString()),
+    changeTime: String(new Date().toISOString()),
     status: statusEnum.active,
     amount: message.amount,
     price: message.price,
@@ -59,7 +59,7 @@ function updateTransaction(message: TransactionInterface) {
   transactions.find((item) => {
     if (item.id === message.id) {
       item.status = statusEnum.cancelled;
-      item.changeTime = String(new Date());
+      item.changeTime = String(new Date().toISOString());
     }
   });
   return transactions.find((item) => message.id === item.id);

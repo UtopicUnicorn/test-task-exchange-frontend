@@ -38,6 +38,16 @@
     justify-content: space-around;
 }
 
+.side_select_block button{
+    transition: 500ms;
+}
+
+.side_select_block button:hover{
+    transform: scale(1.2);
+    transition: 500ms;
+    cursor: pointer;
+}
+
 .side_block{
     flex-direction: column;
     text-align: center;
