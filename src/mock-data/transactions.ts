@@ -1,4 +1,4 @@
-export const date = new Date();
+export const date = new Date().toISOString();
 
 export const transactions = [
   {
