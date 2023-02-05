@@ -7,6 +7,7 @@ import ModalWindow from '../../components/modal-window/modal-window';
 import Ticker from './ticker/ticker';
 import { TransactionsService } from './services/transactions.service';
 import { TransactionInterface } from './interfaces/transaction.interface';
+import { CsvConverter } from '../../components/csv-converter/csv-convert';
 
 export default function ExchangePage() {
   const [modal, setModal] = useState(false);
@@ -32,11 +33,12 @@ export default function ExchangePage() {
 
   return (
     <div className="exchange_container">
-      <div>
+      <div className="exchange_title">
         <h1>Welcome to our exchange portal</h1>
       </div>
       <div className="content_block">
         <div className="work_buttons">
+          <CsvConverter data={data} />
           <button onClick={() => setModal(true)}>Call ticker</button>
         </div>
 

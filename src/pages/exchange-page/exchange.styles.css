@@ -2,6 +2,12 @@
     text-align: center;
 }
 
+.exchange_title{
+    display: inline-block;
+    margin-top: 25px;
+}
+
+
 .modal {
     height: 100vh;
     width: 100vw;
@@ -62,6 +68,37 @@
 .work_buttons button{
     height: 40px;
     width: 100px;
+    margin-left: 20px;
+    transition: 500ms;
+}
+
+.work_buttons a:link{
+    text-decoration: none;
+    color: black;
+
+}
+.work_buttons a:visited {
+    text-decoration: none;
+    color: black;
+
+}
+
+.work_buttons a:hover {
+    text-decoration: none;
+    color: black;
+
+}
+
+.work_buttons a:active{
+    text-decoration: none;
+    color: black;
+}
+
+
+.work_buttons button:hover{
+    transform: scale(1.1);
+    transition: 500ms;
+    cursor: pointer;
 }
 
 .cell_sell{
@@ -70,3 +107,4 @@
 .cell_buy{
     color: green;
 }
+

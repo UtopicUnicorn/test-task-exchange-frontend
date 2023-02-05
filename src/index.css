@@ -13,9 +13,12 @@ code {
 
 .table {
   width: 100%;
-  margin-bottom: 20px;
   border: 1px solid #dddddd;
+  max-height: 500px;
+  min-height: 300px;
+  display: block;
   border-collapse: collapse;
+  overflow-y: scroll;
 }
 .table th {
   font-weight: bold;
@@ -26,4 +29,14 @@ code {
 .table td {
   border: 1px solid #dddddd;
   padding: 5px;
+}
+
+.table button {
+  transition: 500ms;
+}
+
+.table button:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 500ms;
 }
